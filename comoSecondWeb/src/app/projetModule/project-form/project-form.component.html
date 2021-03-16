@@ -1,0 +1,31 @@
+<div class="container">
+  <form [formGroup]="myForm" fxLayout="column">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Project name</label>
+      <input formControlName="title" type="text" class="form-control" placeholder="Project name">
+      <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Colaborateur</label>
+      <input formControlName="colaborateur" type="text" class="form-control" placeholder="name1 / name2...">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Descriptif</label>
+      <textarea formControlName="descriptif" class="form-control" placeholder="Describe your project in few lines" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <div fxLayout="row"
+         fxLayoutAlign="space-around center">
+      <div class="form-group">
+        <label for="exampleFormControlFile1">Document</label>
+        <input formControlName="document" type="file" class="form-control-file" id="exampleFormControlFile1" (change)="uploadFile($event)">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlFile1">Image</label>
+        <input formControlName="image" type="file" class="form-control-file" id="exampleFormControlFile1" accept="image/*" (change)="uploadFile($event)">
+      </div>
+    </div>
+    <br />
+    <br />
+    <button type="submit" class="btn btn-primary" fxFlexAlign="center" (click)="AddProject()">Submit</button>
+  </form>
+</div>

@@ -13,6 +13,7 @@ export class ProjectsComponent implements OnInit {
 
   }
   ngOnInit(): void {
+
     this.service.fetch<Project[]>('https://f35f93ce-8d38-4930-8e47-2bfb40b67dae.mock.pstmn.io/projets').subscribe(
       
       data => {

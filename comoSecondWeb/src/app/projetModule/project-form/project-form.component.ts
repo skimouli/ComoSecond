@@ -34,9 +34,7 @@ export class ProjectFormComponent implements OnInit {
       document: this.fileToUpload,
       image: this.imageToUpload
     }
-    //this.service.creat(projet, 'https://localhost:44371/Projet').subscribe();
-    console.log(this.fileToUpload);
-    console.log(this.imageToUpload);
+    this.service.creat(projet, 'https://localhost:44371/Projet').subscribe();
   }
 
   changeFile(file) {
@@ -56,8 +54,13 @@ export class ProjectFormComponent implements OnInit {
         //console.log(type);
         //this.fileBlob = this.b64Blob([base64], type);
         //console.log(this.fileBlob)
-        if (type.startsWith('image')) { this.imageToUpload = base64; }
-        else { this.fileToUpload = base64; }
+        if (type.startsWith('image')) {
+          this.imageToUpload = base64.split(',').pop().toString();
+          console.log(this.imageToUpload);
+        }
+        else {
+          this.fileToUpload = base64.split(',').pop().toString();
+        }
       });
     } else alert('Nothing')
   }

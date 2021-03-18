@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Project } from '../../shared/model/projet';
 import { ResourceService } from '../../shared/module/core/service/resourceService';
 
@@ -18,12 +18,22 @@ export class ProjectFormComponent implements OnInit {
   ngOnInit(): void {
     this.myForm = this.fb.group({
       title: ['', Validators.required],
-      colaborateur: ['', Validators.required],
+      colaborateur: ['', [this.CollaborateurValidateur] ],
       descriptif: ['', Validators.required],
       document: ['', Validators.required],
       image: ['', Validators.required]
     }
     )
+  }
+
+  //CollaborateurValidateur(): ValidatorFn {
+  //  return (control: FormControl): ValidationErrors | null => {
+  //    return !(control.value && control.value==='rrr') ? { matchRegex: false } : null;     
+  //  }
+  //}
+
+  CollaborateurValidateur(control: FormControl) {
+    return !(control.value && control.value.Match('^([^^]+)\^([^^]+)')) ? { matchRegex: false } : null; 
   }
 
   AddProject() {
@@ -56,11 +66,11 @@ export class ProjectFormComponent implements OnInit {
         //console.log(this.fileBlob)
         if (type.startsWith('image')) {
           this.imageToUpload = base64.split(',').pop().toString();
-          console.log(this.imageToUpload);
         }
         else {
           this.fileToUpload = base64.split(',').pop().toString();
         }
+        
       });
     } else alert('Nothing')
   }

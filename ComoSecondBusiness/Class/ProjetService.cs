@@ -43,6 +43,7 @@ namespace ComoSecondBusiness.Class
         {
             var projetAinserer = new Projet
             {
+                Title = projet.Title,
                 Colaborateur = projet.Colaborateur,
                 Descriptif = projet.Descriptif,
                 Document = Helper.ConvertStringByteHelper.Base64ToByte(projet.Document),

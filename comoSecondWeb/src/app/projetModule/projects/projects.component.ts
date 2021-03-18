@@ -18,13 +18,6 @@ export class ProjectsComponent implements OnInit {
     this.service.fetch<Project[]>('https://localhost:44371/Projet').subscribe(
 
       (data: Project[]) => {
-
-        data.forEach((x) => {
-          x.image = `data:image/jpeg;base64,${x.image}`;
-          x.document = `data:application/vnd.openxmlformats-officedocument.wordprocessingml.document;base64,${x.document}`
-            
-        });
-        console.log(data);
         this.projects = data;
       });
     

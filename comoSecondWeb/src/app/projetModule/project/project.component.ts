@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Project } from '../../shared/model/projet';
 
 @Component({
@@ -8,9 +9,11 @@ import { Project } from '../../shared/model/projet';
 })
 export class ProjectComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
   @Input() project: Project;
   ngOnInit(): void {
   }
-
+  navigation() {
+    this.router.navigate(['/project/details'], { queryParams: this.project  });
+  }
 }

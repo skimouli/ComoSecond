@@ -26,6 +26,7 @@ namespace ComoSecondWebApi.Controllers
         [HttpPost]
         public void Add(ProjetViewModel projet)
         {
+            
             _projetService.InsertProjetViewModel(projet);
         }
     }
